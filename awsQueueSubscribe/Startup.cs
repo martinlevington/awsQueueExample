@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Amazon;
-using Amazon.SQS.Model;
+using awsQueueSubscribe.MessageBus;
 using MessageBusModels;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -16,7 +16,7 @@ using Rebus.Config;
 using Rebus.Routing.TypeBased;
 using Rebus.ServiceProvider;
 
-namespace awsQueuePublish
+namespace awsQueueSubscribe
 {
     public class Startup
     {
@@ -41,16 +41,18 @@ namespace awsQueuePublish
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             // Register handlers 
-            // services.AutoRegisterHandlersFromAssemblyOf<Handler1>();
+            services.AutoRegisterHandlersFromAssemblyOf<BusMessageHandler>();
 
-       
             // Configure and register Rebus
             services.AddRebus(configure => configure
                .Logging(l => l.Serilog())
                 .Transport(t => t.UseAmazonSQSAsOneWayClient("AKIA5KWE5Z3FX65JN3YF", "d2e5ElbBqdz7wIEANYaByl8zbNDv1mKOTSquBYmW", RegionEndpoint.EUWest2))
-                .Routing(r => r.TypeBased().Map<BusMessage>("rebusQueue")));
+              //  .Start();
+            .Routing(r => r.TypeBased().Map<BusMessage>("rebusQueue")));
+           // activator.Bus.Subscribe<StringMessage>().Wait();
 
         }
+      
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -70,7 +72,11 @@ namespace awsQueuePublish
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
-            app.ApplicationServices.UseRebus();
+           //app.ApplicationServices.UseRebus();
+            //or optionally act on the bus
+            
+           app.ApplicationServices.UseRebus(async bus => await bus.Subscribe<BusMessage>());
+
 
             app.UseMvc(routes =>
             {
