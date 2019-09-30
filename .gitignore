@@ -404,3 +404,4 @@ ASALocalRun/
 # Local History for Visual Studio
 .localhistory/
 Subscriber1/appsettings.Development.json
+awsQueuePublish/appsettings.Development.json
