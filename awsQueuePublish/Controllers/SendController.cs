@@ -12,12 +12,12 @@ using Rebus.Bus;
 
 namespace awsQueuePublish.Controllers
 {
-    public class PublishController : Controller
+    public class SendController : Controller
     {
         private readonly IBus bus;
         private readonly ILogger<Startup> logger;
 
-        public PublishController(IBus bus, ILogger<Startup> logger)
+        public SendController(IBus bus, ILogger<Startup> logger)
         {
             this.bus = bus;
             this.logger = logger;
@@ -27,20 +27,22 @@ namespace awsQueuePublish.Controllers
         // GET: /<controller>/
         public async Task<IActionResult> Index()
         {
-            logger.LogInformation("Publishing {MessageCount} messages", 10);
+            logger.LogInformation("Sending {MessageCount} messages", 10);
 
             await Task.WhenAll(
             Enumerable.Range(0, 10)
-                .Select(i => new SubscribeMessage("Published Msg on Rebus and AWS SQS"))
-                .Select(message => bus.Publish(message)));
+                .Select(i => new BusMessage("Hi from dot net core"))
+                .Select(message => bus.Send(message)));
 
             var vm = new PublishViewModel();
-            vm.Msg = "Rebus published another 10 messages!";
+            vm.Msg = "Rebus sent another 10 messages!";
 
 
             return View(vm);
         }
 
+
+       
 
     }
 }

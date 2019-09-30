@@ -44,6 +44,14 @@ namespace awsQueuePublish
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+            .UseContentRoot(Directory.GetCurrentDirectory())
+            .ConfigureAppConfiguration((hostingContext, config) => {
+                config.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                      .AddJsonFile($"appsettings.Development.json", optional: true)
+                      .AddJsonFile($"appsettings.Local.json", optional: true);
+
+            })
+         
                 .UseStartup<Startup>()
                 .UseSerilog();
     }
