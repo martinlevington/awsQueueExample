@@ -1,29 +1,59 @@
-
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "awsQueuePublish", "awsQueuePublish\awsQueuePublish.csproj", "{AA3F3C4C-AE1F-41C7-A17C-6138647A1E63}"
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28922.388
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "awsQueuePublish", "awsQueuePublish\awsQueuePublish.csproj", "{AA3F3C4C-AE1F-41C7-A17C-6138647A1E63}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageBusModels", "MessageBusModels\MessageBusModels.csproj", "{192E367C-C604-40B2-AB20-8FB3D9261684}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessageBusModels", "MessageBusModels\MessageBusModels.csproj", "{192E367C-C604-40B2-AB20-8FB3D9261684}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "awsConsoleQueueSubscribe", "awsConsoleQueueSubscribe\awsConsoleQueueSubscribe.csproj", "{F9946F4C-0290-44B2-8D06-C83B5FC41A58}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "awsConsoleQueueSubscribe", "awsConsoleQueueSubscribe\awsConsoleQueueSubscribe.csproj", "{F9946F4C-0290-44B2-8D06-C83B5FC41A58}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "awsQueuePublishSNS", "awsQueuePublishSNS\awsQueuePublishSNS.csproj", "{CFB1B58E-13E3-4149-A3C5-B6E4A5DD5602}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rebus.AwsSnsAndSqs", "Rebus.AwsSnsAndSqs\Rebus.AwsSnsAndSqs.csproj", "{52F49F36-7B1B-45D7-BFC9-25B6EFE13251}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		RelaseBuildLoadTest|Any CPU = RelaseBuildLoadTest|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{AA3F3C4C-AE1F-41C7-A17C-6138647A1E63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{AA3F3C4C-AE1F-41C7-A17C-6138647A1E63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA3F3C4C-AE1F-41C7-A17C-6138647A1E63}.RelaseBuildLoadTest|Any CPU.ActiveCfg = Release|Any CPU
+		{AA3F3C4C-AE1F-41C7-A17C-6138647A1E63}.RelaseBuildLoadTest|Any CPU.Build.0 = Release|Any CPU
 		{AA3F3C4C-AE1F-41C7-A17C-6138647A1E63}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AA3F3C4C-AE1F-41C7-A17C-6138647A1E63}.Release|Any CPU.Build.0 = Release|Any CPU
 		{192E367C-C604-40B2-AB20-8FB3D9261684}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{192E367C-C604-40B2-AB20-8FB3D9261684}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{192E367C-C604-40B2-AB20-8FB3D9261684}.RelaseBuildLoadTest|Any CPU.ActiveCfg = Release|Any CPU
+		{192E367C-C604-40B2-AB20-8FB3D9261684}.RelaseBuildLoadTest|Any CPU.Build.0 = Release|Any CPU
 		{192E367C-C604-40B2-AB20-8FB3D9261684}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{192E367C-C604-40B2-AB20-8FB3D9261684}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F9946F4C-0290-44B2-8D06-C83B5FC41A58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F9946F4C-0290-44B2-8D06-C83B5FC41A58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9946F4C-0290-44B2-8D06-C83B5FC41A58}.RelaseBuildLoadTest|Any CPU.ActiveCfg = Release|Any CPU
+		{F9946F4C-0290-44B2-8D06-C83B5FC41A58}.RelaseBuildLoadTest|Any CPU.Build.0 = Release|Any CPU
 		{F9946F4C-0290-44B2-8D06-C83B5FC41A58}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F9946F4C-0290-44B2-8D06-C83B5FC41A58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFB1B58E-13E3-4149-A3C5-B6E4A5DD5602}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFB1B58E-13E3-4149-A3C5-B6E4A5DD5602}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFB1B58E-13E3-4149-A3C5-B6E4A5DD5602}.RelaseBuildLoadTest|Any CPU.ActiveCfg = Release|Any CPU
+		{CFB1B58E-13E3-4149-A3C5-B6E4A5DD5602}.RelaseBuildLoadTest|Any CPU.Build.0 = Release|Any CPU
+		{CFB1B58E-13E3-4149-A3C5-B6E4A5DD5602}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFB1B58E-13E3-4149-A3C5-B6E4A5DD5602}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52F49F36-7B1B-45D7-BFC9-25B6EFE13251}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52F49F36-7B1B-45D7-BFC9-25B6EFE13251}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52F49F36-7B1B-45D7-BFC9-25B6EFE13251}.RelaseBuildLoadTest|Any CPU.ActiveCfg = RelaseBuildLoadTest|Any CPU
+		{52F49F36-7B1B-45D7-BFC9-25B6EFE13251}.RelaseBuildLoadTest|Any CPU.Build.0 = RelaseBuildLoadTest|Any CPU
+		{52F49F36-7B1B-45D7-BFC9-25B6EFE13251}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52F49F36-7B1B-45D7-BFC9-25B6EFE13251}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AF56DD14-0A51-49BC-B635-07E958119E97}
 	EndGlobalSection
 EndGlobal

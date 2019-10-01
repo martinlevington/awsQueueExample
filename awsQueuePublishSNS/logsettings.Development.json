@@ -1,0 +1,49 @@
+{
+  "Serilog": {
+    "Using": [
+      "Serilog.Sinks.RollingFile",
+      "Serilog.Sinks.ApplicationInsights",
+      "Serilog.Enrichers.Environment",
+      "Serilog.Enrichers.ApplicationName"
+    ],
+    "MinimumLevel": {
+      "Default": "Debug",
+      "Override": {
+        "Microsoft": "Warning",
+        "System": "Warning"
+      }
+    },
+    "Enrich": [
+      "FromLogContext",
+      "WithMachineName",
+      "WithThreadId",
+      "WithApplicationName",
+      "WithExceptionDetails"
+    ],
+    "WriteTo:Async": {
+      "Name": "Async",
+      "Args": {
+        "configure": [
+          {
+            "Name": "RollingFile",
+            "Args": {
+              "formatter": "Serilog.Formatting.Json.JsonFormatter, Serilog",
+              "pathFormat": "c:\\Logs\\analytics-web-log-{Date}.json",
+              "outputTemplate": "[{MachineName} {ApplicationName} {Environment}] {Timestamp:HH:mm:ss} {RequestId,13} [{Level:u3}] {Message,30:lj} {Properties:j}{NewLine}{Exception}"
+            }
+          },
+          {
+            "Name": "ApplicationInsightsEvents",
+            "Args": {
+              "instrumentationKey": "c727abbd-3c27-4216-bf6e-cb54d830cbb7"
+            }
+          }
+        ]
+      }
+    },
+    "Properties": {
+      "Application": "Analytics Portal",
+      "Environment": "Development"
+    }
+  }
+}
